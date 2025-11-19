@@ -30,7 +30,7 @@ export default function ProjectsPage() {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
             className="bg-white rounded-3xl border border-gray-200  p-4 hover:shadow-xl transition overflow-hidden flex flex-col"
           >
             {/* Project Image */}
-            <div className="w-full h-48 bg-gray-100 rounded-2xl overflow-hidden">
+            <div className="w-full h-64 bg-gray-100 rounded-2xl overflow-hidden">
               <img
                 src={p.image}
                 alt={p.title}
