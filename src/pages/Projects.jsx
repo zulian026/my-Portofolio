@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { projects } from "../data/projects";
+import { Link } from "react-router-dom";
 
 const container = {
   hidden: {},
@@ -22,6 +23,22 @@ const card = {
 export default function ProjectsPage() {
   return (
     <div className="p-6 md:p-10 space-y-12">
+      {/* ---------------- Grid Background (Top Half Only) ---------------- */}
+      <div
+        className="absolute inset-x-0 top-0 h-1/2 pointer-events-none opacity-40"
+        style={{
+          backgroundImage: `
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
+    `,
+          backgroundSize: "30px 30px",
+
+          // Bagian yang bikin halus:
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+        }}
+      />
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Projects</h1>
         <p className="text-gray-600 mt-2 max-w-2xl">
@@ -60,12 +77,18 @@ export default function ProjectsPage() {
                 </h3>
 
                 <div className="flex items-center gap-2">
-                  <button className="p-2 border rounded-xl hover:bg-gray-100">
-                    <FiGithub className="text-gray-700" />
-                  </button>
-                  <button className="p-2 border rounded-xl hover:bg-gray-100">
+                  <Link
+                    to={`/projects/${p.demo}`}
+                    className="p-2 border rounded-xl hover:bg-gray-100"
+                  >
                     <FiExternalLink className="text-gray-700" />
-                  </button>
+                  </Link>
+                  <Link
+                    to={`/projects/${p.github}`}
+                    className="p-2 border rounded-xl hover:bg-gray-100"
+                  >
+                    <FiGithub className="text-gray-700" />
+                  </Link>
                 </div>
               </div>
 
@@ -76,6 +99,13 @@ export default function ProjectsPage() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 {p.description}
               </p>
+
+              <Link
+                to={`/projects/${p.id}`}
+                className="inline-block mt-3 text-sm text-blue-600 hover:underline"
+              >
+                View details →
+              </Link>
 
               {/* Tech tags */}
               <div className="flex flex-wrap gap-2 mt-2">

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import TechStack from "../components/TechStack";
 
 const photos = [
   {
@@ -13,6 +14,18 @@ const photos = [
     caption: "workspace",
     rotate: 6,
     offsetY: 24, // akan terlihat naik/turun (zig-zag)
+  },
+  {
+    src: "https://picsum.photos/300/300?3",
+    caption: "travel",
+    rotate: -3,
+    offsetY: 0,
+  },
+  {
+    src: "https://picsum.photos/300/300?3",
+    caption: "travel",
+    rotate: -3,
+    offsetY: 0,
   },
   {
     src: "https://picsum.photos/300/300?3",
@@ -55,6 +68,23 @@ const cardVariants = {
 export default function About() {
   return (
     <div className="p-6 md:p-10 space-y-14">
+      {/* ---------------- Grid Background (Top Half Only) ---------------- */}
+      <div
+        className="absolute inset-x-0 top-0 h-1/2 pointer-events-none opacity-40"
+        style={{
+          backgroundImage: `
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
+    `,
+          backgroundSize: "30px 30px",
+
+          // Bagian yang bikin halus:
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+        }}
+      />
+
       {/* ---------------- About Description ---------------- */}
       <div className="space-y-4 max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-900">About Me</h1>
@@ -78,7 +108,7 @@ export default function About() {
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
         {photos.map((p, idx) => (
           <motion.div
@@ -208,6 +238,8 @@ export default function About() {
           />
         </div>
       </div>
+
+      <TechStack />
     </div>
   );
 }

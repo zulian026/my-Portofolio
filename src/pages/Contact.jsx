@@ -22,6 +22,22 @@ export default function Contact() {
 
   return (
     <div className="p-6 md:p-10 space-y-12">
+      {/* ---------------- Grid Background (Top Half Only) ---------------- */}
+      <div
+        className="absolute inset-x-0 top-0 h-1/2 pointer-events-none opacity-40"
+        style={{
+          backgroundImage: `
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)
+    `,
+          backgroundSize: "30px 30px",
+
+          // Bagian yang bikin halus:
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))",
+        }}
+      />
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Contact</h1>
